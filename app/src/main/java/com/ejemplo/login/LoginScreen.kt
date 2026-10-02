@@ -35,6 +35,10 @@ fun LoginScreen(
     var emailError by remember { mutableStateOf<String?>(null) }
     var passwordError by remember { mutableStateOf<String?>(null) }
     var showPassword by remember { mutableStateOf(false) }
+    var recordarSesion by remember { mutableStateOf(false) }
+    val messageInvalidEmail = stringResource(R.string.messageInvalidEmail)
+    val messageInvalidPassword = stringResource(R.string.messageInvalidPassword)
+
 
     val focusManager = LocalFocusManager.current
     val emailFocusRequester = remember { FocusRequester() }
@@ -46,7 +50,7 @@ fun LoginScreen(
     fun validarEmail(): Boolean {
         val emailValido = email.isNotBlank() &&
                 Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()
-        emailError = if (!emailValido) "Introduce un email válido" else null
+        emailError = if (!emailValido) messageInvalidEmail else null
         return emailValido
     }
 
@@ -54,7 +58,7 @@ fun LoginScreen(
         val regex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$".toRegex()
         val passValida = regex.matches(password)
         passwordError = if (!passValida) {
-            "Mínimo 8 caracteres, una mayúscula y un número"
+            messageInvalidPassword
         } else null
         return passValida
     }
@@ -154,8 +158,8 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Checkbox(
-                checked = false,
-                onCheckedChange = { /* Estado local */ }
+                checked = recordarSesion,
+                onCheckedChange = { recordarSesion = it }
             )
             Text(stringResource(R.string.recordar_sesion))
         }
@@ -178,9 +182,12 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        TextButton(onClick = { /* Acción */ }) {
+        TextButton(onClick = { /* Acción */ },
+            modifier = Modifier.align(Alignment.End)
+        ) {
             Text(stringResource(R.string.olvidaste_password))
         }
+
     }
 }
 

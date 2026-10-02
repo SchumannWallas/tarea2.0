@@ -3,7 +3,9 @@
     <string name="logo_desc">Logo de la aplicación</string>
     <string name="titulo_bienvenida">Bienvenido/a</string>
     <string name="hint_email">Email</string>
+    <string name="messageInvalidEmail"> Introduce un email válido</string>
     <string name="hint_password">Contraseña</string>
+    <string name="messageInvalidPassword"> Mínimo 8 caracteres, una mayúscula y un número.</string>
     <string name="recordar_sesion">Recordar sesión</string>
     <string name="boton_entrar">ENTRAR</string>
     <string name="olvidaste_password">¿Olvidaste tu contraseña?</string>
