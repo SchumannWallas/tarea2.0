@@ -7,6 +7,9 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
@@ -74,7 +77,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(48.dp))
 
         Icon(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            imageVector = Icons.Filled.AccountCircle,
             contentDescription = stringResource(R.string.logo_desc),
             modifier = Modifier.size(120.dp)
         )
@@ -131,9 +134,9 @@ fun LoginScreen(
                 IconButton(onClick = { showPassword = !showPassword }) {
                     Icon(
                         imageVector = if (showPassword) {
-                            Icons.Filled.Visibility
+                            Icons.Filled.Lock
                         } else {
-                            Icons.Filled.VisibilityOff
+                            Icons.Filled.LockOpen
                         },
                         contentDescription = stringResource(R.string.toggle_password)
                     )
