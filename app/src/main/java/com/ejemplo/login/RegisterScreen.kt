@@ -1,6 +1,5 @@
 package com.ejemplo.login
 
-package com.ejemplo.login
 
 import android.util.Patterns
 import androidx.compose.foundation.layout.*
