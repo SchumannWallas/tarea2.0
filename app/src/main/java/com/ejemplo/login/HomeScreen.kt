@@ -25,6 +25,7 @@ fun HomeScreen(
     // ---------------------------------------------------------
     var menuExpanded by remember { mutableStateOf(false) }
     var showAboutDialog by remember { mutableStateOf(false) }
+    var showLogoutDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -55,7 +56,7 @@ fun HomeScreen(
                             text = { Text(stringResource(R.string.menu_cerrar_sesion)) },
                             onClick = {
                                 menuExpanded = false
-                                onLogout()
+                                showLogoutDialog = true
                             }
                         )
                     }
@@ -99,6 +100,22 @@ fun HomeScreen(
                 TextButton(onClick = { showAboutDialog = false }) {
                     Text(stringResource(R.string.dialog_aceptar))
                 }
+            }
+        )
+    }
+    if (showLogoutDialog) {
+        AlertDialog(
+            onDismissRequest = { showLogoutDialog = false },
+            title = { Text("¿Cerrar sesión?") },
+            text = { Text("Se cerrará tu sesión actual.") },
+            confirmButton = {
+                TextButton(onClick = {
+                    showLogoutDialog = false
+                    onLogout()
+                }) { Text("Aceptar") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showLogoutDialog = false }) { Text("Cancelar") }
             }
         )
     }
