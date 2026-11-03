@@ -36,9 +36,9 @@ fun LoginScreen(
     var emailError by remember { mutableStateOf<String?>(null) }
     var passwordError by remember { mutableStateOf<String?>(null) }
     var showPassword by remember { mutableStateOf(false) }
-    var rememberSession by remember { mutableStateOf(false) }
     val messageInvalidEmail = stringResource(R.string.messageInvalidEmail)
     val messageInvalidPassword = stringResource(R.string.messageInvalidPassword)
+    var rememberSession by remember { mutableStateOf(false) }
 
 
     val focusManager = LocalFocusManager.current
